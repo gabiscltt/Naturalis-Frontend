@@ -3,7 +3,7 @@
     <div class="col col-1">NATURAL COSMETICS</div>
     <div class="col col-2">
       <div>BEAUTY COSMETICS</div>
-      <input type="text" class="pink-input" placeholder="Enter something">
+      <input type="text" class="pink-input" placeholder="Buscar">
     </div>
     <div class="col col-3">VEGAN COSMETIC</div>
   </div>
@@ -56,6 +56,28 @@
       <p style="margin-bottom: 13px;">PRODUCT 4</p>
       <div class="card">
         <img src="images/products.png" width="100px" style="margin: 20px;">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container newsContainer">
+  <div class="row">
+    <div class="col-12">
+      <h2>News</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="carousel">
+        <div class="carousel-inner" #carouselInner>
+          <div class="carousel-item" *ngFor="let item of carouselItems; let i = index">
+            <img [src]="item.image" alt="News {{ i + 1 }}">
+            <p>{{ item.text }}</p>
+          </div>
+        </div>
+        <button class="btn btn-prev" (click)="prevSlide()">&#8592;</button>
+        <button class="btn btn-next" (click)="nextSlide()">&#8594;</button>
       </div>
     </div>
   </div>

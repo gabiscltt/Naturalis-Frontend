@@ -1,0 +1,42 @@
+<!-- app-home.component.html -->
+
+<!-- Banner Section -->
+<section class="banner">
+    <div class="banner-container">
+        <nav class="navbar">
+            <input type="text" class="pink-input" placeholder="Buscar">
+            <ul>
+                <li><button class="pink-button" style="background-color: #bea3a4;">PELE</button></li>
+                <li><button class="pink-button" style="background-color: #f2f3ee; color: #c0adac;">CABELO</button></li>
+                <li><button class="pink-button" style="background-color: #c0adac;">CORPO</button></li>
+                <li><button class="pink-button" style="background-color: #c9b0ae;">Pele oleosa</button></li>
+                <li><button class="pink-button" style="background-color: #d2b7b5;">Pele mista</button></li>
+                <li><button class="pink-button" style="background-color: #d8c7c1;">Pele oleosa</button></li>
+                <li><button class="pink-button" style="background-color: #d3c7c0;">Pele sensível</button></li>
+                <li><button class="pink-button" style="background-color: #d1b8b8;">Linhas finas</button></li>
+                <li><button class="pink-button" style="background-color: #bea3a4;">Olheiras</button></li>
+
+                <div style="height:1px; background-color: rgb(187, 187, 187); margin-top: 32px;"></div>
+
+
+            </ul>
+        </nav>
+        <img src="assets/banner1.jpg" alt="Banner 1">
+    </div>
+</section>
+
+<section class="products">
+    <h2 style="font-size: 17px; color: #474754;">PRODUTOS</h2>
+    <div class="product-grid">
+        <div *ngFor="let product of products; let i = index">
+            <div class="product-card">
+                <img src="images/products.png" alt="product" width="140px">
+            </div>
+            <div class="product-details">
+                <h3 style="margin: -5px; color: #2c2e31">PRODUCT TITLE {{ i + 1 }}</h3>
+                <p style="margin: 8px; font-size: 15px; color: #cfa1ac; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Brief description</p>
+                <button class="buy-button">COMPRAR</button>
+            </div>
+        </div>
+    </div>
+</section>

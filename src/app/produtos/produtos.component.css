@@ -1,0 +1,134 @@
+
+.banner {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: linear-gradient(to bottom right, #b4b5b8 , #a98b8d);
+    box-shadow: 0 20px 40px #a18f8f2d;
+}
+
+.banner-container {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 380px;
+}
+
+.banner-container img {
+    width: 30%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #fff;
+    padding: 20px;
+    padding-top: 40px;
+    width: 200px;
+}
+
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li {
+    margin-bottom: 10px;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.products {
+    padding: 20px;
+    padding-left: 280px;
+    background-color: #d9d0d0;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 20px;
+}
+
+.product-card {
+    background-color: #d3bdbd;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.product-details{
+    text-align: center;
+    margin: 0;
+}
+
+
+
+.pink-input {
+    background-color: #efd4d250;
+    border: none;
+    width: 90%;
+    border-radius: 20px;
+    font-size: 12px;
+    padding: 10px;
+    margin-top: 10px;
+    color: rgb(151, 151, 151);
+    box-shadow: inset -60px 0 20px rgba(146, 59, 139, 0.055)
+  }
+  
+  .pink-input:focus {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border: none;
+    outline: none;
+  }
+
+  .pink-button {
+    border: none;
+    width: 100%;
+    border-radius: 14px;
+    font-size: 12px;
+    padding: 10px;
+    margin-top: 10px;
+    color: rgb(255, 255, 255);
+    box-shadow: inset -60px 0 20px rgba(146, 59, 139, 0.055);
+    cursor: pointer;
+  }
+  
+  .pink-button:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .buy-button {
+    border: none;
+    border-radius: 34px;
+    font-size: 12px;
+    padding: 10px;
+    margin-top: 10px;
+    width: 60%;
+    color: rgb(255, 255, 255);
+    box-shadow: inset -60px 0 20px rgba(146, 59, 139, 0.055);
+    cursor: pointer;
+    background-color: #d4aaab;
+    margin-bottom: 20px;
+    font-style: bold !important;
+
+  }
+  
+  .buy-button:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
