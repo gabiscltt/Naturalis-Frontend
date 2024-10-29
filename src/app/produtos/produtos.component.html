@@ -4,20 +4,20 @@
 <section class="banner">
     <div class="banner-container">
         <nav class="navbar">
-            <input type="text" class="pink-input" placeholder="Buscar">
+            <input type="text" class="pink-input" placeholder="Buscar" [(ngModel)]="searchQuery" (input)="filterByName()">
+
             <ul>
-                <li><button class="pink-button" style="background-color: #bea3a4;">PELE</button></li>
-                <li><button class="pink-button" style="background-color: #f2f3ee; color: #c0adac;">CABELO</button></li>
-                <li><button class="pink-button" style="background-color: #c0adac;">CORPO</button></li>
-                <li><button class="pink-button" style="background-color: #c9b0ae;">Pele oleosa</button></li>
-                <li><button class="pink-button" style="background-color: #d2b7b5;">Pele mista</button></li>
-                <li><button class="pink-button" style="background-color: #d8c7c1;">Pele oleosa</button></li>
-                <li><button class="pink-button" style="background-color: #d3c7c0;">Pele sensível</button></li>
-                <li><button class="pink-button" style="background-color: #d1b8b8;">Linhas finas</button></li>
-                <li><button class="pink-button" style="background-color: #bea3a4;">Olheiras</button></li>
+                <li><button class="pink-button" style="background-color: #bea3a4;" (click)="filterByType('pele')">PELE</button></li>
+                <li><button class="pink-button" style="background-color: #f2f3ee; color: #c0adac;" (click)="filterByType('cabelo')">CABELO</button></li>
+                <li><button class="pink-button" style="background-color: #c0adac;" (click)="filterByType('corpo')">CORPO</button></li>
+                <li><button class="pink-button" style="background-color: #c9b0ae;" (click)="filterByType('pele oleosa')">Pele oleosa</button></li>
+                <li><button class="pink-button" style="background-color: #d2b7b5;" (click)="filterByType('pele mista')">Pele mista</button></li>
+                <li><button class="pink-button" style="background-color: #d8c7c1;" (click)="filterByType('pele normal')">Pele normal</button></li>
+                <li><button class="pink-button" style="background-color: #d3c7c0;" (click)="filterByType('pele sensível')">Pele sensível</button></li>
+                <li><button class="pink-button" style="background-color: #d1b8b8;" (click)="filterByType('linhas finas')">Linhas finas</button></li>
+                <li><button class="pink-button" style="background-color: #bea3a4;" (click)="filterByType('olheiras')">Olheiras</button></li>
 
                 <div style="height:1px; background-color: rgb(187, 187, 187); margin-top: 32px;"></div>
-
 
             </ul>
         </nav>
@@ -28,15 +28,17 @@
 <section class="products">
     <h2 style="font-size: 17px; color: #474754;">PRODUTOS</h2>
     <div class="product-grid">
-        <div *ngFor="let product of products; let i = index">
+        <div *ngFor="let product of filteredProducts; let i = index">
             <div class="product-card">
                 <img src="images/products.png" alt="product" width="140px">
             </div>
             <div class="product-details">
-                <h3 style="margin: -5px; color: #2c2e31">PRODUCT TITLE {{ i + 1 }}</h3>
-                <p style="margin: 8px; font-size: 15px; color: #cfa1ac; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Brief description</p>
+                <h3 style="margin: -5px; color: #2c2e31;"> {{product.productName}}</h3>
+                <p style="margin: px; font-size: 15px; color: #cfa1ac; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">{{product.productDescription}}</p>
+                <p style=" font-size: 15px; color: #ffffff; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-weight: bold;">{{product.productPrice | currency:'BRL'}}</p>
                 <button class="buy-button">COMPRAR</button>
             </div>
         </div>
     </div>
+    <div *ngIf="filteredProducts.length === 0" style="text-align: center; margin-top: 20px; font-size: 20px; color: #2c2e31;">Nenhum produto encontrado</div>
 </section>

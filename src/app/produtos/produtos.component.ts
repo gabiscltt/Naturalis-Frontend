@@ -1,29 +1,37 @@
 import { Component } from '@angular/core';
+import { ProductService } from '../services/item-service.service';
+import { Product } from '../models/produto.model';
 
 @Component({
   selector: 'app-produtos',
   templateUrl: './produtos.component.html',
-  styleUrl: './produtos.component.css'
+  styleUrls: ['./produtos.component.css']
 })
 export class ProdutosComponent {
-  products = [
-    { name: 'Product 1' },
-    { name: 'Product 2' },
-    { name: 'Product 3' },
-    { name: 'Product 4' },
-    { name: 'Product 5' },
-    { name: 'Product 6' },
-    { name: 'Product 6' },
-    { name: 'Product 6' },
-    { name: 'Product 6' },
-    { name: 'Product 6' },
-    { name: 'Product 6' },
-    { name: 'Product 6' },
-  ];
+  products: Product[] = [];
+  filteredProducts: Product[] = [];
+  searchQuery: string = ''; // Add this line
 
-  productTypes = [
-    'Type 1',
-    'Type 2',
-    'Type 3',
-  ];
+  constructor(private productService: ProductService) {}
+
+  ngOnInit() {
+    this.productService.getProducts().subscribe((data) => {
+      this.products = data;
+      this.filteredProducts = data;
+    });
+  }
+
+  filterByType(typeName: string) {
+    console.log(`Filtering by type: ${typeName}`);
+    this.filteredProducts = this.products.filter(product => 
+      product.productTypeNavigation.typeName === typeName
+    );
+  }
+
+  filterByName() {
+    const query = this.searchQuery.toLowerCase();
+    this.filteredProducts = this.products.filter(product => 
+      product.productName.toLowerCase().includes(query)
+    );
+  }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ItemService } from './services/item-service.service';
+import { ProductService } from './services/item-service.service';
 import { Item } from './models/item.model';
 
 @Component({
@@ -10,11 +10,8 @@ import { Item } from './models/item.model';
 export class AppComponent {
   items: Item[] = [];
 
-  
-
-  constructor(private itemService: ItemService) {}
+  constructor(private itemService: ProductService) {}
 
   ngOnInit() {
-    this.itemService.getAllItems().subscribe(items => this.items = items);
   }
 }
