@@ -10,7 +10,7 @@
     margin-top: 20px;
     scrollbar-width: thin;
     scrollbar-color: #d4aaab #f0f0f0;
-    height: 250%;
+    /* height: 250%; */
 }
 .steps {
     display: flex;
@@ -98,7 +98,7 @@
 
 .step-content {
     animation: fadeIn 0.5s ease-out;
-    max-height: 400px;
+    /* max-height: 400px; */
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     position: relative;
