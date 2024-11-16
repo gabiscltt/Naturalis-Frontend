@@ -2,17 +2,19 @@
   <div class="title" routerLink="/" style="cursor: pointer;">
     <span class="dots"></span>NATURALIS
   </div>
-    <div class="right-section">
-      <nav class="nav-links">
-        <ul>
-          <li><a routerLink="produtos">Produtos</a></li>
-          <li><a href="#">Artigos</a></li>
-          <li><a href="#">Test</a></li>
-        </ul>
-      </nav>
-      <div class="icons">
-        <i class="fas fa-shopping-cart">AAAAAA</i>
-        <i class="fas fa-user">AAAAAAAA</i>
-      </div>
+  <div class="right-section">
+    <nav class="nav-links">
+      <ul>
+        <li><a routerLink="produtos">Produtos</a></li>
+        <li><a href="#">Artigos</a></li>
+      </ul>
+    </nav>
+    <div class="icons">
+      <i class="fas fa-shopping-cart" (click)="openCartDialog()"> 
+        <img src="images/shoppingCart.png" alt="Carrinho de Compras" width="25px">
+        <!-- <span *ngIf="cartQuantity > 0" class="cart-quantity">{{ cartQuantity }}</span> -->
+      </i>
+      <i class="fas fa-user"><img src="images/user.png" alt="Carrinho de Compras" width="25px"></i>
     </div>
-  </header>
+  </div>
+</header>

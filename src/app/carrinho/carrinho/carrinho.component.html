@@ -1,0 +1,40 @@
+<div class="cart-modal" *ngIf="cart.length > 0; else emptyCart">
+  <h2 class="cart-title">Seu Carrinho</h2>
+
+  <ul class="cart-items">
+    <li *ngFor="let product of cart" class="cart-item">
+      <img [src]="product.image" alt="{{ product.productName }}" class="product-image" />
+      <div class="product-info">
+        <h3>{{ product.productName }}</h3>
+        <p>{{ product.productDescription }}</p>
+        <p class="price">Preço: R$ {{ product.productPrice.toFixed(2) }}</p>
+
+        <div class="quantity-controls">
+          <button (click)="decreaseQuantity(product.productId)" [disabled]="product.quantity <= 1">-</button>
+          <span>{{ product.quantity }}</span>
+          <button (click)="increaseQuantity(product.productId)">+</button>
+          <button (click)="removeFromCart(product.productId)" class="remove-btn">Remover</button>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <div class="cart-total">
+    <strong>Total: R$ {{ getTotal().toFixed(2) }}</strong>
+  </div>
+
+  <div class="cart-actions">
+    <button mat-button color="primary" (click)="closeDialog()" class="close-btn">Fechar</button>
+    <button mat-button routerLink="finalizar-compra" class="buy-btn">Finalizar Compra</button>
+  </div>
+</div>
+
+<ng-template #emptyCart>
+  <div class="cart-modal empty-cart">
+    <h2 class="cart-title">Seu Carrinho</h2>
+    <p class="empty-cart-msg">Seu carrinho está vazio.</p>
+    <div class="cart-actions">
+      <button mat-button color="primary" (click)="closeDialog()" class="close-btn">Fechar</button>
+    </div>
+  </div>
+</ng-template>

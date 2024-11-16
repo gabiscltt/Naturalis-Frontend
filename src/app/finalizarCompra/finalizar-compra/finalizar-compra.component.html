@@ -1,0 +1,150 @@
+<div class="steps">
+    <div *ngFor="let step of steps; let i = index" class="step"
+        [ngClass]="{'active': currentStep > i, 'completed': currentStep > i}">
+        <div class="circle">
+            <i class="fa" [ngClass]="step.icon"></i>
+        </div>
+        <p>{{ step.name }}</p>
+    </div>
+</div>
+<div class="line"></div>
+
+<div class="purchase-finalization">
+    <div *ngIf="currentStep === 1" class="step-content">
+        <h2>Etapa 1: Revisão dos Produtos</h2>
+        <div class="cart-container">
+            <div class="product-container" *ngIf="cart.length > 0">
+                <div *ngFor="let product of cart">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img [src]="product.image" alt="Imagem do produto">
+                        </div>
+                        <div class="product-info">
+                            <h3>{{ product.productName }}</h3>
+                            <p>{{ product.productDescription }}</p>
+                            <p>R$ {{ product.productPrice | number: '1.2-2' }}</p>
+                            <div class="quantity-controls">
+                                <button (click)="decreaseQuantity(product)"
+                                    [disabled]="product.quantity <= 1">-</button>
+                                <span>{{ product.quantity }}</span>
+                                <button (click)="increaseQuantity(product)">+</button>
+                                <button class="remove" (click)="removeProduct(product)">Remover</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="cart.length === 0">
+                <p class="empty-cart-msg">Seu carrinho está vazio.</p>
+            </div>
+
+        </div>
+        <div class="step-content">
+            <div class="buttons">
+                <div></div>
+                <button class="next-btn" (click)="goToNextStep()" [disabled]="cart.length === 0">Próxima Etapa</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div *ngIf="currentStep === 2" class="step-content">
+        <h2>Etapa 2: Identificação</h2>
+        <form (ngSubmit)="submitIdentification()" #identificationForm="ngForm">
+            <label for="name">Nome Completo:</label>
+            <input type="text" placeholder="Nome completo" [(ngModel)]="userData.name" name="name" required
+                #name="ngModel">
+            <label for="email">Email:</label>
+            <div *ngIf="name.invalid && name.touched" class="error-message">Nome é obrigatório.</div>
+            <input type="email" placeholder="Email" [(ngModel)]="userData.email" name="email" required email
+                #email="ngModel">
+            <div *ngIf="email.invalid && email.touched" class="error-message">Email é obrigatório e deve ser válido.
+            </div>
+            <label for="cpf">CPF:</label>
+            <input type="text" placeholder="CPF" [(ngModel)]="userData.cpf" name="cpf" required
+                pattern="(\d{3}\.\d{3}\.\d{3}-\d{2})|(\d{11})" #cpf="ngModel">
+            <div *ngIf="cpf.invalid && cpf.touched" class="error-message">CPF é obrigatório e deve estar no formato
+                000.000.000-00 ou 00000000000.</div>
+
+        </form>
+        <div class="buttons">
+
+            <button class="prev-btn" (click)="goToPrevStep()">Etapa Anterior</button>
+            <button class="next-btn" (click)="goToNextStep()" [disabled]="identificationForm.invalid">Próxima
+                Etapa</button>
+        </div>
+    </div>
+
+    <div *ngIf="currentStep === 3" class="step-content">
+        <h2>Etapa 3: Entrega</h2>
+        <form (ngSubmit)="submitDelivery()" #deliveryForm="ngForm">
+            <input type="text" placeholder="Endereço" [(ngModel)]="deliveryData.address" name="address" required
+                #address="ngModel">
+            <div *ngIf="address.invalid && address.touched" class="error-message">Endereço é obrigatório.</div>
+            <input type="text" placeholder="CEP" [(ngModel)]="deliveryData.zip" name="zip" required
+                pattern="^[0-9]{5}(-?[0-9]{3})?$" #zip="ngModel">
+            <div *ngIf="zip.invalid && zip.touched" class="error-message">CEP é obrigatório e deve ter o formato
+                00000-000.</div>
+        </form>
+        <div class="buttons">
+
+            <button class="prev-btn" (click)="goToPrevStep()">Etapa Anterior</button>
+            <button class="next-btn" (click)="goToNextStep()" [disabled]="deliveryForm.invalid">Próxima Etapa</button>
+        </div>
+    </div>
+
+    <div *ngIf="currentStep === 4" class="step-content">
+        <h2>Etapa 4: Pagamento</h2>
+        <form (ngSubmit)="submitPayment()" #paymentForm="ngForm">
+
+            <label for="paymentMethod">Método de Pagamento:</label>
+            <select [(ngModel)]="paymentData.method" name="paymentMethod" required #paymentMethod="ngModel">
+                <option value="creditCard">Cartão de Crédito</option>
+                <option value="pix">PIX</option>
+                <option value="boleto">Boleto Bancário</option>
+            </select>
+
+            <div *ngIf="paymentData.method === 'creditCard'">
+                <label for="cardNumber">Número do Cartão:</label>
+                <input type="text" placeholder="Número do Cartão" [(ngModel)]="paymentData.cardNumber" name="cardNumber"
+                    required pattern="\d{16}" #cardNumber="ngModel">
+                <div *ngIf="cardNumber.invalid && cardNumber.touched" class="error-message">Número do cartão é
+                    obrigatório e
+                    deve ter 16 dígitos.</div>
+                <label for="expiry">Data de Validade:</label>
+                <input type="text" placeholder="Data de Validade" [(ngModel)]="paymentData.expiry" name="expiry"
+                    required pattern="\d{2}/\d{2}" #expiry="ngModel">
+                <div *ngIf="expiry.invalid && expiry.touched" class="error-message">Data de validade é obrigatória e
+                    deve
+                    estar no formato MM/AA.</div>
+                <label for="cvv">CVV:</label>
+                <input type="text" placeholder="CVV" [(ngModel)]="paymentData.cvv" name="cvv" required pattern="\d{3}"
+                    #cvv="ngModel">
+                <div *ngIf="cvv.invalid && cvv.touched" class="error-message">CVV é obrigatório e deve ter 3 dígitos.
+                </div>
+            </div>
+
+            <div *ngIf="paymentData.method === 'pix'">
+                <p>Realize o pagamento via PIX. Detalhes do pagamento serão enviados após a confirmação do pedido.</p>
+            </div>
+
+            <div *ngIf="paymentData.method === 'boleto'">
+                <p>O boleto bancário será gerado após a finalização do pedido. O pagamento pode ser feito no banco de
+                    sua escolha.</p>
+            </div>
+        </form>
+        <div class="buttons">
+            <button class="prev-btn" (click)="goToPrevStep()">Etapa Anterior</button>
+            <button type="submit" class="finish-btn" [disabled]="paymentForm.invalid"
+                (click)="submitPayment()">Finalizar Compra</button>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="showAlert" class="custom-alert">
+    <div class="alert-box">
+      <h3>{{ alertTitle }}</h3>
+      <p>{{ alertMessage }}</p>
+      <button routerLink="/">Ok, entendido!</button>
+    </div>
+  </div>

@@ -33,10 +33,10 @@
                 <img src="images/products.png" alt="product" width="140px">
             </div>
             <div class="product-details">
-                <h3 style="margin: -5px; color: #2c2e31;"> {{product.productName}}</h3>
+                <h3 style="margin: -5px; color: #4B4956;"> {{product.productName}}</h3>
                 <p style="margin: px; font-size: 15px; color: #cfa1ac; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">{{product.productDescription}}</p>
-                <p style=" font-size: 15px; color: #ffffff; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-weight: bold;">{{product.productPrice | currency:'BRL'}}</p>
-                <button class="buy-button">COMPRAR</button>
+                <p style=" font-size: 15px; color: #ffffff; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-weight: bold;">{{product.productPrice | currency: 'BRL'}}</p>
+                <button class="buy-button" (click)="addProductToCart(product)">COMPRAR</button>
             </div>
         </div>
     </div>

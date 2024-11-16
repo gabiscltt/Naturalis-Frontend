@@ -8,4 +8,6 @@ export interface Product {
     image: string;
     productType: number;
     productTypeNavigation: ProductType;
+
+    quantity: number
   }

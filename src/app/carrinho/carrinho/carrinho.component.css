@@ -1,0 +1,143 @@
+.cart-modal {
+  position: fixed;
+  top: 10%;
+  right: 20px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 350px;
+  max-height: 80%;
+  overflow-y: auto;
+  z-index: 9999;
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: thin;
+  scrollbar-color: #d4aaab #f0f0f0;
+}
+
+.cart-title {
+  text-align: center;
+  font-size: 24px;
+  color: #B9A6E8;
+  margin-bottom: 15px;
+}
+
+.cart-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 10px;
+  padding-right: 7px;
+}
+
+.product-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  margin-right: 15px;
+}
+
+.product-info {
+  flex-grow: 1;
+}
+
+.product-info h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.product-info p {
+  font-size: 14px;
+  color: #777;
+}
+
+.price {
+  font-weight: bold;
+  color: #ff6f61;
+}
+
+.quantity-controls {
+  display: grid;
+  grid-template-columns: auto auto auto 1fr;
+  gap: 10px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.quantity-controls button {
+  padding: 5px 12px;
+  background-color: #B9A6E8;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.quantity-controls button:disabled {
+  background-color: #ccc;
+}
+
+.quantity-controls span {
+  font-size: 16px;
+  margin: 0 10px;
+}
+
+.remove-btn {
+  background-color: #B9A6E8;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  background-color: #9887c3;
+}
+
+.cart-total {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.cart-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-top: auto;
+}
+
+.close-btn,
+.buy-btn {
+  border: none;
+  border-radius: 34px;
+  font-size: 12px;
+  padding: 10px;
+  color: rgb(255, 255, 255);
+  box-shadow: inset -60px 0 20px rgba(146, 59, 139, 0.055);
+  cursor: pointer;
+  background-color: #d4aaab;
+  font-style: bold !important;
+}
+
+.empty-cart-msg {
+  text-align: center;
+  font-size: 18px;
+  color: #333;
+  padding: 20px;
+}

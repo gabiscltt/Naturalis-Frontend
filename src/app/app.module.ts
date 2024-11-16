@@ -9,13 +9,18 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { ProdutosComponent } from './produtos/produtos.component';
 import { FormsModule } from '@angular/forms';
+import { CarrinhoComponent } from './carrinho/carrinho/carrinho.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { FinalizarCompraComponent } from './finalizarCompra/finalizar-compra/finalizar-compra.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopBarComponent,
     HomepageComponent,
-    ProdutosComponent
+    ProdutosComponent,
+    CarrinhoComponent,
+    FinalizarCompraComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +28,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule
   ],
-  providers: [ProductService],
+  providers: [ProductService, provideAnimationsAsync()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
