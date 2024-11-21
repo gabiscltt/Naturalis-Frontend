@@ -1,0 +1,248 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    position: relative;
+    z-index: 1;
+    background-image: url('../../../../public/images/Banner_Site.png'), url('../../../../public/images/Banner_Site.png');
+    background-position: top left, top right;
+    background-repeat: repeat-y, repeat-y;
+    background-size: 100px 100px;
+    background-attachment: fixed;
+}
+
+
+.banner {
+    text-align: center;
+    margin-bottom: 39px;
+}
+
+.title {
+    text-align: center;
+    color: #fef0ef;
+    font-size: 41px;
+}
+
+
+.card-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    width: 80%;
+    gap: 10px;
+}
+
+.card {
+    border-radius: 38px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    width: 48%;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card1 {
+    display: block !important;
+}
+
+.pink {
+    background-color: #d4aaab;
+    color: white;
+}
+
+.white {
+    background-color: #d9d0d0;
+    color: #4B4956;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.card-text {
+    flex-direction: column;
+    justify-content: space-between;
+    width: 98%;
+}
+
+.card-image {
+    width: 25%;
+    height: auto;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card-description {
+    font-size: 11px;
+    margin-top: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.card-button {
+    background-color: #99cc99;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 15px;
+    cursor: pointer;
+    border-radius: 20px;
+    width: 50%;
+}
+
+.card-button:hover {
+    background-color: #7dae7d;
+}
+.card-button:active {
+    background-color: #577e57;
+}
+
+
+.square {
+    height: 150px;
+    display: block !important;
+    text-align: center;
+}
+
+.small {
+    height: 150px;
+    width: 100%;
+}
+
+.card4 {
+    height: 130px;
+    width: 70%;
+}
+
+.image-card4 {
+    width: 80%;
+
+}
+
+
+.card4-wrapper {
+    margin-left: 5px;
+    width: 50%;
+}
+
+@media (max-width: 768px) {
+    .card-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 80%;
+    }
+
+    .card-image {
+        width: 30%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .card-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .square {
+        width: 80%;
+        margin-bottom: 15px;
+    }
+}
+
+.squares {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+.cute-card {
+    position: relative;
+    background-color: #c12f54;
+    border-radius: 20px;
+    padding: 20px;
+    width: 296px;
+    height: 175px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    font-size: 14px;
+    color: white;
+    letter-spacing: 1px;
+    background: linear-gradient(145deg, #cccccc, #cc9999);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.cute-card h2{
+    
+    font-family: "Cinzel", serif !important
+}
+
+
+.cute-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(145deg, #cc9999, #cccccc);
+}
+
+.squares .cute-card:nth-child(1)::before {
+    content: '˚˖𓍢ִ໋🦢';
+    font-size: 24px;
+    position: absolute;
+    top: 10px;
+    left: 16px;
+    color: #ffffff;
+    transition: transform 0.3s ease;
+}
+
+.squares .cute-card:nth-child(2)::before {
+    content: '𓍢ִ໋🌷͙֒';
+    font-size: 24px;
+    position: absolute;
+    top: 10px;
+    left: 16px;
+    color: #fc2b97;
+    transition: transform 0.3s ease;
+}
+
+.squares .cute-card:nth-child(3)::before {
+    content: '˚˖𓍢ִ໋🦢';
+    font-size: 24px;
+    position: absolute;
+    top: 10px;
+    left: 16px;
+    color: #ffffff;
+    transition: transform 0.3s ease;
+}
+
+.squares .cute-card:nth-child(4)::before {
+    content: '𓍢ִ໋🌷͙֒';
+    font-size: 24px;
+    position: absolute;
+    top: 10px;
+    left: 16px;
+    color: #fc2b97;
+    transition: transform 0.3s ease;
+}
+
+
+.cute-card:hover::before {
+    transform: scale(1.5);
+}
+
+.squares .cute-card:nth-child(even) {
+    background: linear-gradient(145deg, #cccccc, #cc9999);
+}

@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { CarrinhoComponent } from './carrinho/carrinho/carrinho.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { FinalizarCompraComponent } from './finalizarCompra/finalizar-compra/finalizar-compra.component';
+import { ArtigosComponent } from './artigos/artigos/artigos.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FinalizarCompraComponent } from './finalizarCompra/finalizar-compra/fin
     HomepageComponent,
     ProdutosComponent,
     CarrinhoComponent,
-    FinalizarCompraComponent
+    FinalizarCompraComponent,
+    ArtigosComponent
   ],
   imports: [
     BrowserModule,

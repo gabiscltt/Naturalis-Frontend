@@ -15,14 +15,13 @@
     width: 80%;
     height: 80%;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
     margin-left: 380px;
 }
 
 .banner-container img {
-    width: 30%;
-    height: 100%;
+    width: 700px;
     object-fit: cover;
     border-radius: 10px;
 }
