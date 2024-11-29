@@ -17,7 +17,7 @@
                 <div *ngFor="let product of cart">
                     <div class="product-card">
                         <div class="product-image">
-                            <img [src]="product.image" alt="Imagem do produto">
+                            <img [src]="'images/' + product.image" class="imgProduto" alt="Imagem do produto">
                         </div>
                         <div class="product-info">
                             <h3>{{ product.productName }}</h3>
@@ -41,7 +41,7 @@
         </div>
         <div class="step-content">
             <div class="buttons">
-                <div></div>
+                <div style="margin-top:10px">TOTAL: R$ {{ getTotal() | number: '1.2-2' }}</div>
                 <button class="next-btn" (click)="goToNextStep()" [disabled]="cart.length === 0">Próxima Etapa</button>
             </div>
         </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../models/produto.model';
+import { ProductService } from '../../services/item-service.service';
 
 @Component({
   selector: 'app-finalizar-compra',
@@ -11,11 +12,11 @@ export class FinalizarCompraComponent implements OnInit {
   cart: Product[] = [];
   userData = { name: '', email: '', cpf: '' };
   deliveryData = { address: '', zip: '' };
-  paymentData = { 
+  paymentData = {
     method: 'creditCard',
-    cardNumber: '', 
-    expiry: '', 
-    cvv: '' 
+    cardNumber: '',
+    expiry: '',
+    cvv: ''
   };
   showAlert: boolean = false;
   alertTitle: string = '';
@@ -27,6 +28,8 @@ export class FinalizarCompraComponent implements OnInit {
     { name: 'Entrega', icon: 'fa-truck' },
     { name: 'Pagamento', icon: 'fa-credit-card' }
   ];
+
+  constructor(private purchaseSvc: ProductService) { }
 
   ngOnInit(): void {
     const cartData = localStorage.getItem('cart');
@@ -77,25 +80,65 @@ export class FinalizarCompraComponent implements OnInit {
   }
 
   submitPayment(): void {
-    if (this.paymentData.method === 'creditCard' && this.paymentData.cardNumber && this.paymentData.expiry && this.paymentData.cvv) {
-      this.alertTitle = 'Compra Finalizada!';
-      this.alertMessage = '💳 Compra finalizada com Cartão de Crédito! 🎉';
-      this.showAlert = true;
-    } else if (this.paymentData.method === 'pix') {
-      this.alertTitle = 'Compra Finalizada!';
-      this.alertMessage = '📱 Compra finalizada via PIX! Realize o pagamento enviado por email para confirmar o pedido. ✨';
-      this.showAlert = true;
-    } else if (this.paymentData.method === 'boleto') {
-      this.alertTitle = 'Compra Finalizada!';
-      this.alertMessage = '🧾 Compra finalizada com Boleto! Realize o pagamento enviado por email para confirmar o pedido. 💌';
-      this.showAlert = true;
-    }
-    localStorage.clear();
+    this.addPurchase()
+
 
   }
-  
+
+  addPurchase(): void {
+    console.log('Cart:', this.cart);
+    console.log('User Data:', this.userData);
+    console.log('Delivery Data:', this.deliveryData);
+    console.log('Payment Data:', this.paymentData);
+
+    const cart = localStorage.getItem('cart');
+    if (cart !== null) {
+      const parsedCart = JSON.parse(cart);
+
+      const cartItems = parsedCart.map((item: { productId: any; productName: any; productDescription: any; productPrice: any; productType: any; quantity: any; }) => ({
+        productId: item.productId,
+        productName: item.productName,
+        productDescription: item.productDescription,
+        productPrice: item.productPrice,
+        productType: item.productType,
+        quantity: item.quantity
+      }));
+    
+      const purchaseData = {
+        user: this.userData,
+        delivery: this.deliveryData,
+        payment: this.paymentData,
+        cart: cartItems 
+      };
+    
+      this.purchaseSvc.addPurchase(purchaseData).subscribe(x => {
+        if (this.paymentData.method === 'creditCard' && this.paymentData.cardNumber && this.paymentData.expiry && this.paymentData.cvv) {
+          this.alertTitle = 'Compra Finalizada!';
+          this.alertMessage = '💳 Compra finalizada com Cartão de Crédito! 🎉';
+          this.showAlert = true;
+        } else if (this.paymentData.method === 'pix') {
+          this.alertTitle = 'Compra Finalizada!';
+          this.alertMessage = '📱 Compra finalizada via PIX! Realize o pagamento enviado por email para confirmar o pedido. ✨';
+          this.showAlert = true;
+        } else if (this.paymentData.method === 'boleto') {
+          this.alertTitle = 'Compra Finalizada!';
+          this.alertMessage = '🧾 Compra finalizada com Boleto! Realize o pagamento enviado por email para confirmar o pedido. 💌';
+          this.showAlert = true;
+        }
+        localStorage.clear();
+      })
+    }
+
+
+
+  }
+
+  getTotal(): number {
+    return this.cart.reduce((total, product) => total + product.productPrice * product.quantity, 0);
+  }
+
   closeAlert(): void {
     this.showAlert = false;
   }
-  
+
 }

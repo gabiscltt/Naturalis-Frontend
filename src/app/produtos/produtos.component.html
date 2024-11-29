@@ -1,6 +1,4 @@
-<!-- app-home.component.html -->
 
-<!-- Banner Section -->
 <section class="banner">
     <div class="banner-container">
         <nav class="navbar">
@@ -21,8 +19,7 @@
 
             </ul>
         </nav>
-        <img src="images/Banner_Site.png" alt="Banner com produtos">
-        <img src="images/Banner_Site.png" alt="Banner com produtos">
+        <img src="images/Banner_Produtos.png" alt="Banner com produtos">
     </div>
 </section>
 
@@ -31,7 +28,7 @@
     <div class="product-grid">
         <div *ngFor="let product of filteredProducts; let i = index">
             <div class="product-card">
-                <img src="images/products.png" alt="product" width="140px">
+                <img [src]="'images/' + product.image" alt="product" class="imgProduto">
             </div>
             <div class="product-details">
                 <h3 style="margin: -5px; color: #4B4956;"> {{product.productName}}</h3>

@@ -3,7 +3,7 @@
 
   <ul class="cart-items">
     <li *ngFor="let product of cart" class="cart-item">
-      <img [src]="product.image" alt="{{ product.productName }}" class="product-image" />
+      <img [src]="'images/' + product.image" alt="product" class="imgProduto">
       <div class="product-info">
         <h3>{{ product.productName }}</h3>
         <p>{{ product.productDescription }}</p>

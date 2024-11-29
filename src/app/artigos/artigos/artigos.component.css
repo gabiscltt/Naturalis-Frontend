@@ -3,14 +3,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;
     position: relative;
     z-index: 1;
-    background-image: url('../../../../public/images/Banner_Site.png'), url('../../../../public/images/Banner_Site.png');
-    background-position: top left, top right;
-    background-repeat: repeat-y, repeat-y;
-    background-size: 100px 100px;
-    background-attachment: fixed;
+    margin-top: 10px;
 }
 
 
@@ -124,7 +119,7 @@
 }
 
 .image-card4 {
-    width: 80%;
+    width: 90%;
 
 }
 

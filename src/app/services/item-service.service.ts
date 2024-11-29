@@ -11,9 +11,13 @@ import { environment } from '../../environments.ts/environment';
 export class ProductService {
   private apiUrl = `${environment.apiUrl}/product`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.apiUrl);
+  }
+
+  addPurchase(purchaseData: any): Observable<any> {
+    return this.http.post(this.apiUrl, purchaseData);
   }
 }

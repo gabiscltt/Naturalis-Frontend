@@ -17,6 +17,10 @@
   scrollbar-color: #d4aaab #f0f0f0;
 }
 
+.imgProduto{
+  max-width: 27%;
+  max-height: 27%;
+}
 .cart-title {
   text-align: center;
   font-size: 24px;

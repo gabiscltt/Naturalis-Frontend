@@ -4,4 +4,10 @@ body{
     font-family: "Cinzel", serif;
     font-optical-sizing: auto;
   
+    background-image: url('../public/images/Padrao.png'), url('../public/images/Padrao.png');
+    background-position: top left, top right;
+    background-repeat: repeat-y, repeat-y;
+    background-attachment: fixed;
+    background-size: 13% auto, 13% auto;
+    
 }
