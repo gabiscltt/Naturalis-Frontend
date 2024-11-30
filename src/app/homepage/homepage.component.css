@@ -115,15 +115,15 @@
 .carousel {
   position: relative;
   width: 100%;
-  height: 250px;
-  overflow: hidden
+  height: 350px;
+  overflow: hidden;
+  margin-bottom: 50px
 }
-
 .carousel-inner {
   position: relative;
   width: 500%;
   height: 100%;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 2s ease-in-out;
 }
 
 .carousel-item {
@@ -134,19 +134,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center; 
 }
 
 .carousel-item img {
-  width: 100px;
-  height: 100px;
-  margin: 20px;
+  width: 200px;
 }
 
 .carousel-item p {
-  font-size: 18px;
+  font-size: 24px !important;
   color: #a38b96;
   margin: 20px;
+  width: 380px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
+
 
 .btn-prev, .btn-next {
   position: absolute;

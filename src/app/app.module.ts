@@ -8,11 +8,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { ProdutosComponent } from './produtos/produtos.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CarrinhoComponent } from './carrinho/carrinho/carrinho.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { FinalizarCompraComponent } from './finalizarCompra/finalizar-compra/finalizar-compra.component';
 import { ArtigosComponent } from './artigos/artigos/artigos.component';
+import { UserPageComponent } from './userPage/user-page/user-page.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +23,15 @@ import { ArtigosComponent } from './artigos/artigos/artigos.component';
     ProdutosComponent,
     CarrinhoComponent,
     FinalizarCompraComponent,
-    ArtigosComponent
+    ArtigosComponent,
+    UserPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [ProductService, provideAnimationsAsync()],
   bootstrap: [AppComponent]

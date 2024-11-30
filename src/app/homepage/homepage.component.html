@@ -18,33 +18,33 @@
 <div class="productContainer">
   <div class="row4">
     <div class="col-4">
-      <p style="margin-bottom: 13px;">PRODUCT 1</p>
+      <p style="margin-bottom: 13px;">SÉRUM DE ARROZ</p>
       <div class="card">
-        <img src="images/products.png" width="100px" style="margin: 20px;">
+        <img src="images/Produto_Serum_Arroz.png" width="70px">
       </div>
     </div>
     <div class="col-4">
-      <p style="margin-bottom: 13px;">PRODUCT 2</p>
+      <p style="margin-bottom: 13px;">SÉRUM GLOW</p>
       <div class="card">
-        <img src="images/products.png" width="100px" style="margin: 20px;">
+        <img src="images/Produto_Serum_Glow_Arroz.png" width="100px">
       </div>
     </div>
     <div class="col-4">
-      <p style="margin-bottom: 13px;">PRODUCT 3</p>
+      <p style="margin-bottom: 13px;">PROTETOR SOLAR MATE</p>
       <div class="card">
-        <img src="images/products.png" width="100px" style="margin: 20px;">
+        <img src="images/Produto_ProtetorSolar_Mate.png" width="100px">
       </div>
     </div>
     <div class="col-4">
-      <p style="margin-bottom: 13px;">PRODUCT 4</p>
+      <p style="margin-bottom: 13px;">CREME FACIAL</p>
       <div class="card">
-        <img src="images/products.png" width="100px" style="margin: 20px;">
+        <img src="images/Produto_Creme_FacialNutritivo.png" width="160px" style="margin-left: 4px; margin-top: 	8px;">
       </div>
     </div>
   </div>
 </div>
 
-<div class="container newsContainer">
+<div class="newsContainer">
   <div class="row">
     <div class="col-12">
       <h2>News</h2>
@@ -55,8 +55,8 @@
       <div class="carousel">
         <div class="carousel-inner" #carouselInner>
           <div class="carousel-item" *ngFor="let item of carouselItems; let i = index">
-            <img [src]="item.image" alt="News {{ i + 1 }}">
-            <p>{{ item.text }}</p>
+            <img [src]="'images/' + item.image" alt="Imagem Carrosel {{ i + 1 }}">
+            <p style="color: white; font-size: 18px;" [innerHTML]="item.text"></p>
           </div>
         </div>
         <button class="btn btn-prev" (click)="prevSlide()">&#8592;</button>

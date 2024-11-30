@@ -1,0 +1,75 @@
+<div class="user-page">
+    <ng-container *ngIf="!isLoggedIn">
+        <div class="auth-section">
+            <h2>{{ isRegistering ? 'Crie uma Conta' : 'Login' }}</h2>
+
+            <form *ngIf="!isRegistering" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input formControlName="email" type="email" placeholder="Digite seu email" />
+                </div>
+                <div class="form-group">
+                    <label>Senha</label>
+                    <input formControlName="password" type="password" placeholder="Digite sua Senha" />
+                </div>
+                <button class="primary-btn" type="submit" [disabled]="loginForm.invalid">Login</button>
+            </form>
+
+            <form *ngIf="isRegistering" [formGroup]="registerForm" (ngSubmit)="onRegister()">
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input formControlName="name" type="text" placeholder="Digite seu Nome" />
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input formControlName="email" type="email" placeholder="Digite seu email" />
+                </div>
+                <div class="form-group">
+                    <label>CPF</label>
+                    <input formControlName="cpf" type="text" placeholder="Digite seu CPF" />
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input formControlName="password" type="password" placeholder="Digite sua Senha" />
+                </div>
+                <button class="primary-btn" type="submit" [disabled]="registerForm.invalid">Registrar</button>
+            </form>
+
+            <p>
+                <button class="link-btn" (click)="toggleRegistering()">
+                    {{ isRegistering ? 'Já tem uma conta? Login' : 'Criar uma Conta' }}
+                </button>
+            </p>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="isLoggedIn">
+        <div class="user-info">
+            <h2>Welcome, {{ username }}! <span style="font-size: 18px;">°❀⋆.ೃ࿔*:･</span></h2>
+            <h3>Suas Compras:</h3>
+            <div *ngIf="userPurchases.length > 0; else noPurchases">
+                <div class="purchase-card" *ngFor="let purchase of userPurchases; index as i">
+                    <h4>Compra {{ i + 1 }}</h4>
+                    <ul class="product-list">
+                        <li *ngFor="let item of purchase.cartItems" class="product-item">
+                            <div class="product-details">
+                                <h5>{{ item.productName }}</h5>
+                                <p>{{ item.productDescription }}</p>
+                                <p style="font-size: small; color: rgb(62, 64, 65);"><strong>Valor:</strong> ${{ item.productPrice }}</p>
+                                <p style="font-size: small; color: rgb(62, 64, 65);"><strong>Quantidade:</strong> {{ item.quantity }}</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <p class="total-price">
+                        <strong>Valor Total:</strong> ${{ getTotalPrice(purchase.cartItems) }}
+                    </p>
+                </div>
+            </div>
+            <ng-template #noPurchases>
+                <p>Nenhuma compra encontrada!</p>
+            </ng-template>
+            <button class="logout-btn" (click)="onLogout()">Logout</button>
+        </div>
+    </ng-container>
+
+
+</div>

@@ -1,3 +1,29 @@
-body{
+
+body, html {
+    height: 100%;
     margin: 0;
-}
+    display: flex;
+    flex-direction: column;
+  }
+  
+  router-outlet {
+    flex-grow: 1; 
+  }
+  
+  .bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #e1c7c3;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    z-index: 10;
+    font-size: 16px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0px 0px;
+    border-top: #bea6a2 solid 1px;
+    font-family: "Montserrat", sans-serif;
+  }
+  

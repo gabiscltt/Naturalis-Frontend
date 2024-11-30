@@ -125,7 +125,7 @@ export class FinalizarCompraComponent implements OnInit {
           this.alertMessage = '🧾 Compra finalizada com Boleto! Realize o pagamento enviado por email para confirmar o pedido. 💌';
           this.showAlert = true;
         }
-        localStorage.clear();
+        localStorage.setItem('cart', JSON.stringify([]));
       })
     }
 

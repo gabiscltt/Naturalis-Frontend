@@ -9,12 +9,29 @@ export class HomepageComponent {
   @ViewChild('carouselInner') carouselInner!: ElementRef;
 
   carouselItems = [
-    { image: 'assets/news1.png', text: 'News 1 text' },
-    { image: 'assets/news2.png', text: 'News 2 text' },
-    { image: 'assets/news3.png', text: 'News 3 text' },
-    { image: 'assets/news4.png', text: 'News 4 text' },
-    { image: 'assets/news5.png', text: 'News 5 text' }
+    { 
+      image: 'userIcon.png', 
+      text: '“Trocar para cosméticos veganos melhorou minha pele em apenas 2 semanas!” <br> – Ana'
+    },
+    { 
+      image: 'Produto_Serum_Calmante_ChaVerde.png', 
+      text: 'Mantenha sua pele hidratada neste inverno com nossos séruns hidratantes.'
+    },
+    { 
+      image: 'reciclar.png', 
+      text: 'Nossa embalagem agora é 100% reciclável! Junte-se ao movimento zero desperdício.'
+    },
+    { 
+      image: 'userIcon2.png', 
+      text: '“Eu amo como o sérum glow é suave e eficaz!” <br> – Maria'
+    },
+    { 
+      image: 'Produto_ProtetorSolar_Mate.png', 
+      text: 'Prepare-se para o verão com nossos protetores solares leves e não oleosos!'
+    }
   ];
+  
+  
 
   currentPage = 0;
 
